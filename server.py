@@ -47,13 +47,13 @@ def average_metrics(metrics):
     aucs = sum(aucs) / len(aucs)
 
     # Return metrics in dictionary
-    return {"accuracy": accuracies,
-            "recall": recalls,
-            "precision": precisions,
-            "f1_score": f1s,
-            "missrate": missrates,
-            "fallout": fallouts,
-            "auc": aucs}
+    return {"accuracy": round(accuracies, 5),
+            "recall": round(recalls, 5),
+            "precision": round(precisions, 5),
+            "f1_score": round(f1s, 5),
+            "missrate": round(missrates, 5),
+            "fallout": round(fallouts, 5),
+            "auc": round(aucs, 5)}
 
 
 
@@ -68,7 +68,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             on_fit_config_fn=fit_config,
             initial_parameters=fl.common.ndarrays_to_parameters(parameters)
         )
-    elif strategy_num == 2: # FedAvg
+    elif strategy_num == 2: # FedAvgM
         strategy = fl.server.strategy.FedAvgM(
             fraction_fit=1,
             fraction_evaluate=1,

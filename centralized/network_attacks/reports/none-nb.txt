@@ -1,0 +1,64 @@
+GaussianNB
+ GaussianNB()
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    1.00000   0.97333   0.98648      1987
+    Grayhole    0.96316   0.64469   0.77238      1987
+   Blackhole    0.73836   0.98993   0.84584      1987
+    Flooding    0.98218   0.99849   0.99027      1987
+
+    accuracy                        0.90161      7948
+   macro avg    0.92092   0.90161   0.89874      7948
+weighted avg    0.92092   0.90161   0.89874      7948
+
+
+F1-Score: 0.89874
+AUC: 0.97911
+Log Loss: 1.952
+Total Time: 0.02355 secondsGaussianNB
+ GaussianNB()
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    1.00000   0.97333   0.98648      1987
+    Grayhole    0.96316   0.64469   0.77238      1987
+   Blackhole    0.73836   0.98993   0.84584      1987
+    Flooding    0.98218   0.99849   0.99027      1987
+
+    accuracy                        0.90161      7948
+   macro avg    0.92092   0.90161   0.89874      7948
+weighted avg    0.92092   0.90161   0.89874      7948
+
+
+F1-Score: 0.89874
+AUC: 0.97911
+Log Loss: 1.952
+Total Time: 0.02323 secondsGaussianNB
+ GaussianNB()
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    1.00000   0.97333   0.98648      1987
+    Grayhole    0.96316   0.64469   0.77238      1987
+   Blackhole    0.73836   0.98993   0.84584      1987
+    Flooding    0.98218   0.99849   0.99027      1987
+
+    accuracy                        0.90161      7948
+   macro avg    0.92092   0.90161   0.89874      7948
+weighted avg    0.92092   0.90161   0.89874      7948
+
+
+F1-Score: 0.89874
+AUC: 0.97911
+Log Loss: 1.952
+Total Time: 0.02362 seconds
