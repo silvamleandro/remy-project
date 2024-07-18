@@ -1,5 +1,5 @@
 # Imports
-from tensorflow.keras import layers, utils
+from tensorflow.keras import layers, utils # type: ignore
 import numpy as np
 import tensorflow as tf
 

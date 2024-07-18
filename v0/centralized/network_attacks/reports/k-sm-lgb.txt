@@ -1,0 +1,64 @@
+LGBMClassifier
+ LGBMClassifier(objective='multiclass', random_state=42)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99892   0.99607   0.99749      5591
+    Grayhole    0.98811   0.98140   0.98475      5591
+   Blackhole    0.98210   0.99124   0.98665      5591
+    Flooding    0.99911   0.99946   0.99928      5591
+
+    accuracy                        0.99204     22364
+   macro avg    0.99206   0.99204   0.99204     22364
+weighted avg    0.99206   0.99204   0.99204     22364
+
+
+F1-Score: 0.99204
+AUC: 0.99972
+Log Loss: 0.02677
+Total Time: 2.5987 secondsLGBMClassifier
+ LGBMClassifier(objective='multiclass', random_state=42)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99892   0.99607   0.99749      5591
+    Grayhole    0.98811   0.98140   0.98475      5591
+   Blackhole    0.98210   0.99124   0.98665      5591
+    Flooding    0.99911   0.99946   0.99928      5591
+
+    accuracy                        0.99204     22364
+   macro avg    0.99206   0.99204   0.99204     22364
+weighted avg    0.99206   0.99204   0.99204     22364
+
+
+F1-Score: 0.99204
+AUC: 0.99972
+Log Loss: 0.02677
+Total Time: 2.70611 secondsLGBMClassifier
+ LGBMClassifier(objective='multiclass', random_state=42)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99892   0.99607   0.99749      5591
+    Grayhole    0.98811   0.98140   0.98475      5591
+   Blackhole    0.98210   0.99124   0.98665      5591
+    Flooding    0.99911   0.99946   0.99928      5591
+
+    accuracy                        0.99204     22364
+   macro avg    0.99206   0.99204   0.99204     22364
+weighted avg    0.99206   0.99204   0.99204     22364
+
+
+F1-Score: 0.99204
+AUC: 0.99972
+Log Loss: 0.02677
+Total Time: 2.80975 seconds

@@ -1,0 +1,64 @@
+DecisionTreeClassifier
+ DecisionTreeClassifier(random_state=42)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99713   0.99374   0.99543      5591
+    Grayhole    0.97858   0.98033   0.97945      5591
+   Blackhole    0.98337   0.98372   0.98355      5591
+    Flooding    0.99857   0.99982   0.99920      5591
+
+    accuracy                        0.98940     22364
+   macro avg    0.98941   0.98940   0.98941     22364
+weighted avg    0.98941   0.98940   0.98941     22364
+
+
+F1-Score: 0.98941
+AUC: 0.99331
+Log Loss: 0.36194
+Total Time: 0.15177 secondsDecisionTreeClassifier
+ DecisionTreeClassifier(random_state=42)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99713   0.99374   0.99543      5591
+    Grayhole    0.97858   0.98033   0.97945      5591
+   Blackhole    0.98337   0.98372   0.98355      5591
+    Flooding    0.99857   0.99982   0.99920      5591
+
+    accuracy                        0.98940     22364
+   macro avg    0.98941   0.98940   0.98941     22364
+weighted avg    0.98941   0.98940   0.98941     22364
+
+
+F1-Score: 0.98941
+AUC: 0.99331
+Log Loss: 0.36194
+Total Time: 0.15345 secondsDecisionTreeClassifier
+ DecisionTreeClassifier(random_state=42)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99713   0.99374   0.99543      5591
+    Grayhole    0.97858   0.98033   0.97945      5591
+   Blackhole    0.98337   0.98372   0.98355      5591
+    Flooding    0.99857   0.99982   0.99920      5591
+
+    accuracy                        0.98940     22364
+   macro avg    0.98941   0.98940   0.98941     22364
+weighted avg    0.98941   0.98940   0.98941     22364
+
+
+F1-Score: 0.98941
+AUC: 0.99331
+Log Loss: 0.36194
+Total Time: 0.15284 seconds
