@@ -6,7 +6,6 @@ from optuna.samplers import TPESampler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_validate, StratifiedKFold
 from xgboost import XGBClassifier
-import math
 import optuna
 import pandas as pd
 
@@ -35,7 +34,7 @@ def process_class_weight(params, trials_df, class_weight_name="class_weight"):
 
 
 class HyperParamRandomForestClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=10, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=50, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -84,7 +83,7 @@ class HyperParamRandomForestClassifier:
 
 
 class HyperParamXGBoostClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=10, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=50, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -102,7 +101,7 @@ class HyperParamXGBoostClassifier:
                       "reg_alpha": trial.suggest_float("reg_alpha", low=0.0, high=1.0, step=0.1),
                       "reg_lambda": trial.suggest_float("reg_lambda", low=0.0, high=1.0, step=0.1),
                       "class_weight": {k: trial.suggest_int(f"class_weight_{k}", v["low"], v["high"]) for k, v in {
-                          k: {"low": 1, "high": int(round(math.sqrt(max(Counter(self.y).values()) / v), 0))} for k, v in Counter(self.y).items()}.items()}}
+                          k: {"low": 1, "high": int(round(max(Counter(self.y).values()) / v, 0))} for k, v in Counter(self.y).items()}.items()}}
         
         model = XGBClassifier(**param_dist)
         scores = cross_validate(estimator=model, X=self.X, y=self.y, n_jobs=-1,
@@ -140,7 +139,7 @@ class HyperParamXGBoostClassifier:
 
 
 class HyperParamLightGBMClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=10, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=50, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -159,7 +158,7 @@ class HyperParamLightGBMClassifier:
                       "reg_alpha": trial.suggest_float("reg_alpha", low=0.0, high=1.0, step=0.1),
                       "reg_lambda": trial.suggest_float("reg_lambda", low=0.0, high=1.0, step=0.1),
                       "class_weight": {k: trial.suggest_int(f"class_weight_{k}", v["low"], v["high"]) for k, v in {
-                          k: {"low": 1, "high": int(round(math.sqrt(max(Counter(self.y).values()) / v), 0))} for k, v in Counter(self.y).items()}.items()}}
+                          k: {"low": 1, "high": int(round(max(Counter(self.y).values()) / v, 0))} for k, v in Counter(self.y).items()}.items()}}
         
         model = LGBMClassifier(**param_dist, verbose_eval=False)
         scores = cross_validate(estimator=model, X=self.X, y=self.y, n_jobs=-1,
@@ -197,7 +196,7 @@ class HyperParamLightGBMClassifier:
 
 
 class HyperParamCatBoostClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=10, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=50, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -213,7 +212,7 @@ class HyperParamCatBoostClassifier:
                       "max_depth": trial.suggest_int("max_depth", low=2, high=15),
                       "l2_leaf_reg": trial.suggest_float("l2_leaf_reg", low=0.0, high=1.0, step=0.1),
                       "class_weights": {k: trial.suggest_int(f"class_weights_{k}", v["low"], v["high"]) for k, v in {
-                          k: {"low": 1, "high": int(round(math.sqrt(max(Counter(self.y).values()) / v), 0))} for k, v in Counter(self.y).items()}.items()}}
+                          k: {"low": 1, "high": int(round(max(Counter(self.y).values()) / v, 0))} for k, v in Counter(self.y).items()}.items()}}
 
         model = CatBoostClassifier(**param_dist, verbose=False)
         scores = cross_validate(estimator=model, X=self.X, y=self.y, n_jobs=-1,
