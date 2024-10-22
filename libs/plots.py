@@ -75,8 +75,7 @@ def show_pie_plots(df, column_name, category="is_target", title="", figsize=(12,
 
     for i, cat in enumerate(df[category].unique()):  # For each category
         axs[i].set_title(f"{column_name} - {cat}")  # Title
-        # Contagem de valores
-        count = df[df[category] == cat][column_name].value_counts()
+        count = df[df[category] == cat][column_name].value_counts()  # Value counts
         axs[i].pie(count, labels=count.index, autopct="%1.1f%%")  # Pie plot
 
     plt.tight_layout()  # Adjust layout
@@ -85,7 +84,7 @@ def show_pie_plots(df, column_name, category="is_target", title="", figsize=(12,
 
 
 def show_scatterplot(df, x, y, category="is_target", title="", figsize=(16, 8)):
-    plt.figure(figsize=figsize)  # Tamanho da figura
+    plt.figure(figsize=figsize)  # Figure size
 
     # Scatterplot
     if not category:  # Without Category column
@@ -94,4 +93,11 @@ def show_scatterplot(df, x, y, category="is_target", title="", figsize=(16, 8)):
         sns.scatterplot(data=df, hue=category, x=x, y=y)
     
     plt.title(title)  # Title
+    plt.show()  # Show plot
+
+
+def plot_correlation_matrix(df, method="spearman", figsize=(16, 16)):
+    corr_df = df.corr(method=method)  # Get confusion matrix
+    plt.figure(figsize=figsize)  # Figure size
+    sns.heatmap(corr_df, annot=True, cmap="coolwarm", fmt=".2f")
     plt.show()  # Show plot

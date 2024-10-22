@@ -81,8 +81,50 @@ def preprocess_flight_data(df, selected_cols=None):
     df.drop(columns="Timestamp", inplace=True)  # Drop non-useful columns. DateTime replaces Timestamp
     # DateTime as first column
     df = df[["DateTime"] + [col for col in df.columns if col != "DateTime"]]
+
+    # Categorical columns
+    categorical_cols = [col for col in df.columns if any(col.startswith(suffix) for suffix in [
+        "FlyingStateChanged_state_", "HomeTypeAvailabilityChanged_type_"])]
+    # Convert categorical columns to object
+    df[categorical_cols] = df[categorical_cols].astype(object)
+    # Numerical columns
+    numerical_cols = sorted(list(set(df.drop(columns=["DateTime", "is_target"]).columns) - set(categorical_cols)))
     
-    return df  # DataFrame after preprocessing
+    return df, categorical_cols, numerical_cols  # DataFrame after preprocessing, and categorical & numerical columns
+
+
+def preprocess_network_data(df):
+    # Remove blank in column names and in lower case
+    # Also, replace blank in the middle of the string with underscore
+    df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
+    # Sort DataFrame by 'Time' column
+    df = df.sort_values(by=["time"]).reset_index(drop=True)
+    # Drop 'id' and 'is_ch' column
+    df.drop(columns=["id", "is_ch"], inplace=True)
+    # Rename class column
+    df.rename(columns={"attack_type": "is_target"}, inplace=True)
+    # Remove TDMA schedule attack
+    df = df[df["is_target"] != "TDMA"].reset_index(drop=True)
+    # Convert classes to numeric
+    df["is_target"] = df["is_target"].map({
+        "Normal": 0, "Grayhole": 1, "Blackhole": 2, "Flooding": 3}.get)
+
+    # Categorical columns
+    categorical_cols = [column for column in df.columns if df[column].isin([0, 1]).all()]
+    # Numerical columns
+    numerical_cols = sorted(list(set(df.drop(columns=["time", "is_target"]).columns) - set(categorical_cols)))
+
+    return df, categorical_cols, numerical_cols  # DataFrame after preprocessing, and categorical & numerical columns
+
+
+def drop_columns(df, numerical_cols, features, columns_to_drop):
+    # Drop specified columns from the DataFrame
+    df.drop(columns=columns_to_drop, inplace=True)
+    # From lists now...
+    numerical_cols = [x for x in numerical_cols if x not in columns_to_drop]
+    features = [x for x in features if x not in columns_to_drop]
+
+    return df, numerical_cols, features  # DataFrame after dropping columns
 
 
 def scaler_data(data, scaler=None):
