@@ -88,7 +88,7 @@ def preprocess_flight_data(df, selected_cols=None):
     # Convert categorical columns to object
     df[categorical_cols] = df[categorical_cols].astype(object)
     # Numerical columns
-    numerical_cols = sorted(list(set(df.drop(columns=["DateTime", "is_target"]).columns) - set(categorical_cols)))
+    numerical_cols = sorted(list(set(df.drop(columns=["DateTime"]).columns) - set(categorical_cols)))
     
     return df, categorical_cols, numerical_cols  # DataFrame after preprocessing, and categorical & numerical columns
 
