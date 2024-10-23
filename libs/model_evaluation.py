@@ -1,4 +1,6 @@
 # Imports
+from eli5 import show_weights
+from IPython.display import display
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
     f1_score,
@@ -12,7 +14,6 @@ from sklearn.model_selection import cross_validate, StratifiedKFold
 import matplotlib.pyplot as plt
 import numpy as np
 import scikitplot as skplt
-import shap
 
 # Default SEED
 RANDOM_STATE = 42
@@ -164,17 +165,7 @@ def plot_feature_importances(model, feature_names, top_n=10, perc=True):
     return top_features  # TOP features
 
 
-def shap_plot(model, X):
-    # Feature explainability
-    explainer = shap.TreeExplainer(model)
-    # Return SHAP values
-    shap_values = explainer.shap_values(X)
-    # Number of Classes
-    num_labels = len(shap_values)
-
-    # SHAP for each label (except non-target: 0)
-    for i in range(1, num_labels):
-        if num_labels > 2: print(f"\n>> Class {i}:\n")
-        # Plot of previous values for "Class i"
-        shap.summary_plot(shap_values[i], X, max_display=len(X.columns))
-        plt.show()  # Show plot
+def plot_weights(model, feature_names, top_n=10):
+    # Weights
+    display(show_weights(model, feature_names=feature_names,
+                         top=top_n))

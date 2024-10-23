@@ -46,9 +46,9 @@ def resampling_data(X_train, y_train, numerical_cols, categorical_cols, epochs=5
     # Create a BalanceData object for resampling
     balance = BalanceData(X_train, y_train)
     
-    # Apply RUS to reduce majority class by 50%
+    # Apply RUS to reduce majority class to sum of minority classes
     balance.rus(params={"random_state": RANDOM_STATE, "sampling_strategy": dict(sorted(
-        {label: int(y_train.value_counts()[label] * (0.50 if label == 0 else 1)) for label in y_train.unique()}.items()))})
+        {label: (y_train != 0).sum() if label == 0 else (y_train == label).sum() for label in y_train.unique()}.items()))})
     resampled["ONLY_RUS"]["X"], resampled["ONLY_RUS"]["y"], resampling_obj = balance.fit_resample()
     if object_to_save: save_object(resampling_obj, f"{BIN_PATH}resampling/RUS_obj")  # Optionally save the resampling object
     print(">> ONLY_RUS: Done!\n")
