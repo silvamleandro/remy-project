@@ -1,0 +1,73 @@
+LGBMClassifier
+ LGBMClassifier(bagging_fraction=0.9237672839915458, bagging_freq=13,
+               feature_fraction=0.45405443244732435,
+               lambda_l1=8.498899649582069e-06, lambda_l2=0.0646300186126255,
+               min_child_samples=37, num_leaves=331)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99946   0.99374   0.99659      5591
+    Grayhole    0.98759   0.98211   0.98484      5591
+   Blackhole    0.98230   0.99249   0.98737      5591
+    Flooding    0.99857   0.99946   0.99902      5591
+
+    accuracy                        0.99195     22364
+   macro avg    0.99198   0.99195   0.99195     22364
+weighted avg    0.99198   0.99195   0.99195     22364
+
+
+F1-Score: 0.99195
+AUC: 0.99981
+Log Loss: 0.02344
+Total Time: 5.93935 secondsLGBMClassifier
+ LGBMClassifier(bagging_fraction=0.9237672839915458, bagging_freq=13,
+               feature_fraction=0.45405443244732435,
+               lambda_l1=8.498899649582069e-06, lambda_l2=0.0646300186126255,
+               min_child_samples=37, num_leaves=331)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99946   0.99374   0.99659      5591
+    Grayhole    0.98759   0.98211   0.98484      5591
+   Blackhole    0.98230   0.99249   0.98737      5591
+    Flooding    0.99857   0.99946   0.99902      5591
+
+    accuracy                        0.99195     22364
+   macro avg    0.99198   0.99195   0.99195     22364
+weighted avg    0.99198   0.99195   0.99195     22364
+
+
+F1-Score: 0.99195
+AUC: 0.99981
+Log Loss: 0.02344
+Total Time: 4.62009 secondsLGBMClassifier
+ LGBMClassifier(bagging_fraction=0.9237672839915458, bagging_freq=13,
+               feature_fraction=0.45405443244732435,
+               lambda_l1=8.498899649582069e-06, lambda_l2=0.0646300186126255,
+               min_child_samples=37, num_leaves=331)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99946   0.99374   0.99659      5591
+    Grayhole    0.98759   0.98211   0.98484      5591
+   Blackhole    0.98230   0.99249   0.98737      5591
+    Flooding    0.99857   0.99946   0.99902      5591
+
+    accuracy                        0.99195     22364
+   macro avg    0.99198   0.99195   0.99195     22364
+weighted avg    0.99198   0.99195   0.99195     22364
+
+
+F1-Score: 0.99195
+AUC: 0.99981
+Log Loss: 0.02344
+Total Time: 5.71545 seconds

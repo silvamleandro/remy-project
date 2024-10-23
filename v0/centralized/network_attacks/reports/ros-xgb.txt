@@ -1,0 +1,94 @@
+XGBClassifier
+ XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              gamma=None, gpu_id=None, grow_policy=None, importance_type=None,
+              interaction_constraints=None, learning_rate=None, max_bin=None,
+              max_cat_threshold=None, max_cat_to_onehot=None,
+              max_delta_step=None, max_depth=None, max_leaves=None,
+              min_child_weight=None, missing=nan, monotone_constraints=None,
+              n_estimators=100, n_jobs=None, num_parallel_tree=None,
+              objective='multi:softprob', predictor=None, ...)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99946   0.99517   0.99731      5591
+    Grayhole    0.98494   0.98229   0.98361      5591
+   Blackhole    0.98276   0.98891   0.98583      5591
+    Flooding    0.99911   0.99982   0.99946      5591
+
+    accuracy                        0.99155     22364
+   macro avg    0.99157   0.99155   0.99155     22364
+weighted avg    0.99157   0.99155   0.99155     22364
+
+
+F1-Score: 0.99155
+AUC: 0.99974
+Log Loss: 0.02381
+Total Time: 6.00631 secondsXGBClassifier
+ XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              gamma=None, gpu_id=None, grow_policy=None, importance_type=None,
+              interaction_constraints=None, learning_rate=None, max_bin=None,
+              max_cat_threshold=None, max_cat_to_onehot=None,
+              max_delta_step=None, max_depth=None, max_leaves=None,
+              min_child_weight=None, missing=nan, monotone_constraints=None,
+              n_estimators=100, n_jobs=None, num_parallel_tree=None,
+              objective='multi:softprob', predictor=None, ...)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99946   0.99517   0.99731      5591
+    Grayhole    0.98494   0.98229   0.98361      5591
+   Blackhole    0.98276   0.98891   0.98583      5591
+    Flooding    0.99911   0.99982   0.99946      5591
+
+    accuracy                        0.99155     22364
+   macro avg    0.99157   0.99155   0.99155     22364
+weighted avg    0.99157   0.99155   0.99155     22364
+
+
+F1-Score: 0.99155
+AUC: 0.99974
+Log Loss: 0.02381
+Total Time: 6.04993 secondsXGBClassifier
+ XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              gamma=None, gpu_id=None, grow_policy=None, importance_type=None,
+              interaction_constraints=None, learning_rate=None, max_bin=None,
+              max_cat_threshold=None, max_cat_to_onehot=None,
+              max_delta_step=None, max_depth=None, max_leaves=None,
+              min_child_weight=None, missing=nan, monotone_constraints=None,
+              n_estimators=100, n_jobs=None, num_parallel_tree=None,
+              objective='multi:softprob', predictor=None, ...)
+
+
+			Classification Report
+
+              precision    recall  f1-score   support
+
+      Normal    0.99946   0.99517   0.99731      5591
+    Grayhole    0.98494   0.98229   0.98361      5591
+   Blackhole    0.98276   0.98891   0.98583      5591
+    Flooding    0.99911   0.99982   0.99946      5591
+
+    accuracy                        0.99155     22364
+   macro avg    0.99157   0.99155   0.99155     22364
+weighted avg    0.99157   0.99155   0.99155     22364
+
+
+F1-Score: 0.99155
+AUC: 0.99974
+Log Loss: 0.02381
+Total Time: 6.02279 seconds
