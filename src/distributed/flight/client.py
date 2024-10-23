@@ -9,6 +9,10 @@ from libs.fl.metrics import evaluate_learning
 import argparse
 import flwr as fl
 import numpy as np
+import warnings
+
+# Ignore warnings
+warnings.filterwarnings("ignore")
 
 verbose = 0 # Show metrics results or not
 

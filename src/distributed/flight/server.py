@@ -5,6 +5,10 @@ from libs.fl.metrics import average_metrics
 from typing import Dict
 import argparse
 import flwr as fl
+import warnings
+
+# Ignore warnings
+warnings.filterwarnings("ignore")
 
 
 def fit_config(rnd: int) -> Dict:
@@ -97,8 +101,8 @@ def main():
     del X_train # Delete X_train
 
     try: # Select and create strategy
-        strategy = select_strategy(strategy_num=int(args.strategy_num), min_available_clients=4, parameters=parameters)
-    except ValueError: strategy = select_strategy(strategy_num=1, min_available_clients=4, parameters=parameters)
+        strategy = select_strategy(strategy_num=int(args.strategy_num), min_available_clients=2, parameters=parameters)
+    except ValueError: strategy = select_strategy(strategy_num=1, min_available_clients=2, parameters=parameters)
     
     # Start Flower server
     fl.server.start_server(server_address="0.0.0.0:8080",
