@@ -4,7 +4,7 @@
 
 echo "Starting Federated Learning server using Flower"
 
-python server.py --data_path="./data/uav_data_1.csv" --strategy_num=$1 &
+python server.py --data_path="./data/jamming_flight_preprocessed.csv" --strategy_num=$1 &
 sleep 15  # Sleep to give the server enough time to start
 
 for filename in ./data/*.csv; do

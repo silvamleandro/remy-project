@@ -1,11 +1,11 @@
 # Imports
-from modules import load_data
-from modules.fl.autoencoder import (
+from libs.utils import load_data
+from libs.fl.autoencoder import (
     create_model,
     reconstruction_loss,
     distance_calculation
 )
-from modules.fl.metrics import evaluate_learning
+from libs.fl.metrics import evaluate_learning
 import argparse
 import flwr as fl
 import numpy as np
@@ -19,7 +19,7 @@ class FlwrClient(fl.client.NumPyClient):
 
     def __init__(self, data_path):
         self.data_path = data_path
-        self.X_train, self.y_train, self.X_test, self.y_test = load_data.load_data(self.data_path)
+        self.X_train, self.y_train, self.X_test, self.y_test = load_data(self.data_path)
 
         input_dim = self.X_train.shape[1] # Number of predictor variables
         # Create autoencoder model

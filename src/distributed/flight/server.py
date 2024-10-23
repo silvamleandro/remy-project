@@ -1,7 +1,7 @@
 # Imports
-from modules import load_data
-from modules.fl.autoencoder import create_model
-from modules.fl.metrics import average_metrics
+from libs.utils import load_data
+from libs.fl.autoencoder import create_model
+from libs.fl.metrics import average_metrics
 from typing import Dict
 import argparse
 import flwr as fl
@@ -91,7 +91,7 @@ def main():
     args = parser.parse_args()
 
     # Initializing a generic model to get its parameters
-    X_train, _, _, _ = load_data.load_data(args.data_path)
+    X_train, _, _, _ = load_data(args.data_path)
     
     parameters = create_model(X_train.shape[1]).get_weights() # Global autoencoder
     del X_train # Delete X_train
