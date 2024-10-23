@@ -1,5 +1,4 @@
 # Imports
-from eli5 import show_weights
 from IPython.display import display
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
@@ -163,9 +162,3 @@ def plot_feature_importances(model, feature_names, top_n=10, perc=True):
     plt.show()
 
     return top_features  # TOP features
-
-
-def plot_weights(model, feature_names, top_n=10):
-    # Weights
-    display(show_weights(model, feature_names=feature_names,
-                         top=top_n))
