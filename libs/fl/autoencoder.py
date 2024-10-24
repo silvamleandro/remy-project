@@ -1,5 +1,5 @@
 # Imports
-from tensorflow.keras import layers, utils # type: ignore
+from tensorflow.keras import layers, utils  # type: ignore
 import numpy as np
 import tensorflow as tf
 
@@ -13,25 +13,26 @@ def create_model(input_dim):
 
     # Encoder layer
     encoder = tf.keras.Sequential([
-        layers.Dense(32, activation='relu'),
-        layers.Dense(16, activation='relu'),
-        layers.Dense(8, activation='relu'),
-        layers.Dense(4, activation='relu'),
+        layers.Dense(32, activation="relu"),
+        layers.Dense(16, activation="relu"),
+        layers.Dense(8, activation="relu"),
+        layers.Dense(4, activation="relu"),
         # Bottleneck
-        layers.Dense(2, activation='relu')])(input)
+        layers.Dense(2, activation="relu")])(input)
 
     # Decoder layer
     decoder = tf.keras.Sequential([
         layers.Dense(4, activation="relu"),
         layers.Dense(8, activation="relu"),
-        layers.Dense(16, activation='relu'),
-        layers.Dense(32, activation='relu'),        
+        layers.Dense(16, activation="relu"),
+        layers.Dense(32, activation="relu"),        
         layers.Dense(input_dim, activation="sigmoid")])(encoder)
     
     # Instantiate the autoencoder
     model = tf.keras.Model(inputs=input, outputs=decoder)
     # Compile...
-    model.compile(optimizer='adam', loss='mae')
+    model.compile(optimizer="adam", loss="mean_squared_error")
+    # input_dim -> 32 -> 16 -> 8 -> 4 -> 8 -> 16 -> 32 -> input_dim
     return model # Autoencoder model
 
 
@@ -41,10 +42,10 @@ def reconstruction_loss(x, x_hat):
 
 def distance_calculation(losses, normal, abnormal):
     # For each sample loss, calculate the minimun distance and set a label for test purpose
-    preds = np.zeros(len(losses)) # Create array for predicted values
+    preds = np.zeros(len(losses))  # Create array for predicted values
     for i, loss in enumerate(losses):
         if abs(loss - normal) > abs(loss - abnormal):
-            preds[i] = 1 # Abnormal
-        else: preds[i] = 0 # Normal
+            preds[i] = 1  # Abnormal
+        else: preds[i] = 0  # Normal
 
     return preds # Predicted values
