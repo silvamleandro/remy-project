@@ -2,13 +2,13 @@
 # It executes the Flower Server (server.py) and multiple clients with the script client.py
 #!/bin/bash
 
-echo "Starting Federated Learning server using Flower"
+echo "[REMY][FLIGHT MODULE] Starting Federated Learning server using Flower"
 
 python server.py --data_path="./data/jamming_flight_preprocessed.csv" --strategy_num=$1 &
-sleep 15  # Sleep to give the server enough time to start
+sleep 10  # Sleep to give the server enough time to start
 
 for filename in ./data/*.csv; do
-    echo "Starting client with $filename data"
+    echo "[REMY][FLIGHT MODULE] Starting client with $filename data"
     python client.py --data_path=${filename} &
 done
 
