@@ -5,14 +5,11 @@ collaboRative intrusion dEtection system for unManned aerial vehicles swarm Secu
   <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/remy_work.png" width="400">
 </p>
 
-[🚧 Work in Progress 🚧]
-
 <br>
 
 Project Structure:
 ```
 ├── libs
-│   ├── fl
 ├── src
 │   ├── flight
 │   │   ├── centralized
