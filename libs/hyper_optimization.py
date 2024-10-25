@@ -13,7 +13,7 @@ RANDOM_STATE = 42
 
 
 class HyperParamRandomForestClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=25, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=10, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -56,7 +56,7 @@ class HyperParamRandomForestClassifier:
 
 
 class HyperParamXGBoostClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=25, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=10, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -101,7 +101,7 @@ class HyperParamXGBoostClassifier:
 
 
 class HyperParamLightGBMClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=25, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=10, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -147,7 +147,7 @@ class HyperParamLightGBMClassifier:
 
 
 class HyperParamCatBoostClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=25, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=10, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
