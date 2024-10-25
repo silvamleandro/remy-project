@@ -1,6 +1,7 @@
 # Imports
 from catboost import CatBoostClassifier
 from lightgbm import LGBMClassifier
+from optuna.samplers import TPESampler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_validate, StratifiedKFold
 from xgboost import XGBClassifier
@@ -12,7 +13,7 @@ RANDOM_STATE = 42
 
 
 class HyperParamRandomForestClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=50, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=25, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -42,11 +43,11 @@ class HyperParamRandomForestClassifier:
 
     def run(self, verbosity=optuna.logging.CRITICAL) -> RandomForestClassifier:
         optuna.logging.set_verbosity(verbosity)  # optuna.logging
-        study = optuna.create_study(direction="maximize")
+        study = optuna.create_study(direction="maximize", sampler=TPESampler(seed=self.random_state))
         # sampler to obtain reproducible optimization results
 
         # Optimizing...
-        study.optimize(self.objective, n_trials=self.n_trials, n_jobs=-1)
+        study.optimize(self.objective, n_trials=self.n_trials)
         params = study.best_trial.params  # Best hyperparameters
         trials_df = study.trials_dataframe()  # DataFrame with all trials
         print("\n\n")
@@ -55,7 +56,7 @@ class HyperParamRandomForestClassifier:
 
 
 class HyperParamXGBoostClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=50, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=25, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -87,11 +88,11 @@ class HyperParamXGBoostClassifier:
 
     def run(self, verbosity=optuna.logging.CRITICAL) -> XGBClassifier:
         optuna.logging.set_verbosity(verbosity)  # optuna.logging
-        study = optuna.create_study(direction="maximize")
+        study = optuna.create_study(direction="maximize", sampler=TPESampler(seed=self.random_state))
         # sampler to obtain reproducible optimization results
         
         # Optimizing...
-        study.optimize(self.objective, n_trials=self.n_trials, n_jobs=-1)
+        study.optimize(self.objective, n_trials=self.n_trials)
         params = study.best_trial.params  # Best hyperparameters
         trials_df = study.trials_dataframe()  # DataFrame with all trials
         print("\n\n")
@@ -100,7 +101,7 @@ class HyperParamXGBoostClassifier:
 
 
 class HyperParamLightGBMClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=50, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=25, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -133,11 +134,11 @@ class HyperParamLightGBMClassifier:
 
     def run(self, verbosity=optuna.logging.CRITICAL) -> LGBMClassifier:
         optuna.logging.set_verbosity(verbosity)  # optuna.logging
-        study = optuna.create_study(direction="maximize")
+        study = optuna.create_study(direction="maximize", sampler=TPESampler(seed=self.random_state))
         # sampler to obtain reproducible optimization results
 
         # Optimizing...
-        study.optimize(self.objective, n_trials=self.n_trials, n_jobs=-1)
+        study.optimize(self.objective, n_trials=self.n_trials)
         params = study.best_trial.params  # Best hyperparameters
         trials_df = study.trials_dataframe()  # DataFrame with all trials
         print("\n\n")
@@ -146,7 +147,7 @@ class HyperParamLightGBMClassifier:
 
 
 class HyperParamCatBoostClassifier:
-    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=50, k=5, random_state=RANDOM_STATE):
+    def __init__(self, X: pd.DataFrame, y: pd.Series, n_trials=25, k=5, random_state=RANDOM_STATE):
         self.X = X
         self.y = y
         self.n_trials = n_trials
@@ -176,11 +177,11 @@ class HyperParamCatBoostClassifier:
 
     def run(self, verbosity=optuna.logging.CRITICAL) -> CatBoostClassifier:
         optuna.logging.set_verbosity(verbosity)  # optuna.logging
-        study = optuna.create_study(direction="maximize")
+        study = optuna.create_study(direction="maximize", sampler=TPESampler(seed=self.random_state))
         # sampler to obtain reproducible optimization results
 
         # Optimizing...
-        study.optimize(self.objective, n_trials=self.n_trials, n_jobs=-1)
+        study.optimize(self.objective, n_trials=self.n_trials)
         params = study.best_trial.params  # Best hyperparameters
         trials_df = study.trials_dataframe()  # DataFrame with all trials
         print("\n\n")
