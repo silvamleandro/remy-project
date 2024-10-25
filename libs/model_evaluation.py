@@ -53,23 +53,18 @@ def plot_pr_curve(model, X_test, y_test, title="Precision-Recall (PR) Curve", fi
     plt.show()  # Show plot
 
 
-def train_validate_model(model, X_train, y_train, k=5, random_state=RANDOM_STATE, average="", roc_auc_scoring="roc_auc", verbose=True):
-    
-    # Multiclass (default setting)
-    if (not average or roc_auc_scoring == "roc_auc") and y_train.nunique() > 2:
-        average = "_macro"
-        roc_auc_scoring = "roc_auc_ovr"
-
+def train_validate_model(model, X_train, y_train, k=5, random_state=RANDOM_STATE, verbose=True):
+    # Cross-Validation
     scores = cross_validate(estimator=model, X=X_train, y=y_train, n_jobs=-1,
                             cv=StratifiedKFold(  # Stratified K-Fold
                                 n_splits=k, shuffle=True, random_state=random_state),
-                            scoring=(f"precision{average}", f"recall{average}", f"f1{average}", f"{roc_auc_scoring}", "neg_log_loss"))  # Validação cruzada
+                            scoring=("precision_macro", "recall_macro", "f1_macro", "roc_auc_ovr", "neg_log_loss"))  # Validação cruzada
 
     results = {}  # Save training/validation results to dictionary
-    results["Precision"] = f"{round(scores[f'test_precision{average}'].mean() * 100, 2)} +- {round(scores[f'test_precision{average}'].std() * 100, 2)}"
-    results["Recall"] = f"{round(scores[f'test_recall{average}'].mean() * 100, 2)} +- {round(scores[f'test_recall{average}'].std() * 100, 2)}"
-    results["F1"] = f"{round(scores[f'test_f1{average}'].mean() * 100, 2)} +- {round(scores[f'test_f1{average}'].std() * 100, 2)}"
-    results["ROC_AUC"] = f"{round(scores[f'test_{roc_auc_scoring}'].mean() * 100, 2)} +- {round(scores[f'test_{roc_auc_scoring}'].std() * 100, 2)}"
+    results["Precision"] = f"{round(scores['test_precision_macro'].mean() * 100, 2)} +- {round(scores['test_precision_macro'].std() * 100, 2)}"
+    results["Recall"] = f"{round(scores['test_recall_macro'].mean() * 100, 2)} +- {round(scores['test_recall_macro'].std() * 100, 2)}"
+    results["F1"] = f"{round(scores['test_f1_macro'].mean() * 100, 2)} +- {round(scores['test_f1_macro'].std() * 100, 2)}"
+    results["ROC_AUC"] = f"{round(scores['test_roc_auc_ovr'].mean() * 100, 2)} +- {round(scores['test_roc_auc_ovr'].std() * 100, 2)}"
     results["Log_Loss"] = f"{round(abs(scores['test_neg_log_loss'].mean()), 4)} +- {round(abs(scores['test_neg_log_loss'].std()), 4)}"
     
     if verbose:  # Print results
