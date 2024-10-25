@@ -5,7 +5,14 @@ from libs.fl.autoencoder import (
     reconstruction_loss,
     distance_calculation
 )
-from libs.fl.metrics import evaluate_learning
+from sklearn.metrics import (
+    confusion_matrix,
+    accuracy_score,
+    recall_score,
+    precision_score,
+    f1_score,
+    roc_auc_score
+)
 import argparse
 import flwr as fl
 import numpy as np
@@ -15,6 +22,20 @@ import warnings
 warnings.filterwarnings("ignore")
 
 verbose = 0 # Show metrics results or not
+
+
+def evaluate_learning(y_true, y_pred):
+    accuracy = accuracy_score(y_true, y_pred)  # Accuracy
+    recall = recall_score(y_true, y_pred)  # Recall
+    precision = precision_score(y_true, y_pred)  # Precision
+    f1 = f1_score(y_true, y_pred)  # F1-score
+    tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()  # Confusion matrix
+    missrate = fn / (fn + tp)  # Miss rate
+    fallout = fp / (fp + tn)  # Fall-out
+    auc = roc_auc_score(y_true, y_pred)  # ROC AUC
+
+    # Evaluation metrics
+    return accuracy, recall, precision, f1, missrate, fallout, auc
 
 
 class FlwrClient(fl.client.NumPyClient):

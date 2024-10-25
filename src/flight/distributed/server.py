@@ -1,7 +1,6 @@
 # Imports
 from libs.utils import load_data
 from libs.fl.autoencoder import create_model
-from libs.fl.metrics import average_metrics
 from typing import Dict
 import argparse
 import flwr as fl
@@ -19,6 +18,35 @@ def fit_config(rnd: int) -> Dict:
     }
     # Configuration for each training
     return config
+
+
+def average_metrics(metrics):
+    # Get local metrics
+    accuracies = [metric["accuracy"] for _, metric in metrics]
+    recalls = [metric["recall"] for _, metric in metrics]
+    precisions = [metric["precision"] for _, metric in metrics]
+    f1s = [metric["f1_score"] for _, metric in metrics]
+    missrates = [metric["missrate"] for _, metric in metrics]
+    fallouts = [metric["fallout"] for _, metric in metrics]
+    aucs = [metric["auc"] for _, metric in metrics]
+
+    # Calculate global metrics
+    accuracies = sum(accuracies) / len(accuracies)
+    recalls = sum(recalls) / len(recalls)
+    precisions = sum(precisions) / len(precisions)
+    f1s = sum(f1s) / len(f1s)
+    missrates = sum(missrates) / len(missrates)
+    fallouts = sum(fallouts) / len(fallouts)
+    aucs = sum(aucs) / len(aucs)
+
+    # Metrics in dictionary
+    return {"accuracy": round(accuracies, 5),
+            "recall": round(recalls, 5),
+            "precision": round(precisions, 5),
+            "f1_score": round(f1s, 5),
+            "missrate": round(missrates, 5),
+            "fallout": round(fallouts, 5),
+            "auc": round(aucs, 5)}
 
 
 def select_strategy(strategy_num, min_available_clients, parameters):

@@ -27,7 +27,7 @@ network_df, _, _ = preprocess_network_data(network_df)
 uav_1_df, uav_2_df = split_train_test(network_df, time_column="time", target_column="is_target", test_size=0.50)
 
 # Selected features in Boruta
-boruta_features = ["adv_s", "expaned_energy", "dist_ch_to_bs", "adv_r", "who_ch", "data_r"]
+boruta_features = ["join_s", "who_ch", "data_s", "expaned_energy", "dist_ch_to_bs", "send_code", "rank", "adv_r"]
 # Selecting...
 uav_1_df = uav_1_df[boruta_features + ["is_target"]]
 uav_2_df = uav_2_df[boruta_features + ["is_target"]]
