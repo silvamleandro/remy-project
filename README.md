@@ -17,11 +17,17 @@ REMY detects attacks on the UAV network and in-flight anomalies, applying machin
 
 ### Dependencies
 
-This project requires Python version **3.10** or higher.
+This project requires Linux OS and Python version **3.10** or higher.
 
 > **Note:** Python 3.10.3 is recommended.
 
 ### Installing
+
+Firstly, clone the repository into the user's `/home` directory:
+
+```bash
+git clone https://github.com/silvamleandro/remy-project.git
+```
 
 To install the necessary dependencies, run the following command:
 
