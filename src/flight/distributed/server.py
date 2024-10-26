@@ -60,7 +60,7 @@ def average_metrics(metrics):
 def select_strategy(strategy_num, min_available_clients, parameters):
     # Select and create strategy
     if strategy_num == 1:  # FedAvg
-        fl.common.logger.log(INFO, "########################## FedAvg ##########################")
+        fl.common.logger.log(INFO, "########################## (1) FedAvg ##########################")
         strategy = fl.server.strategy.FedAvg(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -70,7 +70,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             initial_parameters=fl.common.ndarrays_to_parameters(parameters)
         )
     elif strategy_num == 2:  # FedAvgM
-        fl.common.logger.log(INFO, "########################## FedAvgM ##########################")
+        fl.common.logger.log(INFO, "########################## (2) FedAvgM ##########################")
         strategy = fl.server.strategy.FedAvgM(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -82,7 +82,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             server_momentum=0.95
         )
     elif strategy_num == 3:  # FedAdagrad
-        fl.common.logger.log(INFO, "########################## FedAdagrad ##########################")
+        fl.common.logger.log(INFO, "########################## (3) FedAdagrad ##########################")
         strategy = fl.server.strategy.FedAdagrad(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -95,7 +95,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             tau = 1e-9
         )
     elif strategy_num == 4:  # FedAdam
-        fl.common.logger.log(INFO, "########################## FedAdam ##########################")
+        fl.common.logger.log(INFO, "########################## (4) FedAdam ##########################")
         strategy = fl.server.strategy.FedAdam(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -110,7 +110,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             tau = 1e-9
         )
     elif strategy_num == 5:  # FedYogi
-        fl.common.logger.log(INFO, "########################## FedYogi ##########################")
+        fl.common.logger.log(INFO, "########################## (5) FedYogi ##########################")
         strategy = fl.server.strategy.FedYogi(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -143,7 +143,7 @@ def main():
 
     try:  # Select and create strategy
         strategy = select_strategy(strategy_num=int(args.strategy_num), min_available_clients=2, parameters=parameters)
-    except ValueError: strategy = select_strategy(strategy_num=1, min_available_clients=2, parameters=parameters)
+    except UnboundLocalError: strategy = select_strategy(strategy_num=1, min_available_clients=2, parameters=parameters)
     
     # Start Flower server
     fl.server.start_server(server_address="0.0.0.0:8080",
