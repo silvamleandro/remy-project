@@ -1,6 +1,5 @@
 # Imports
 from sklearn.preprocessing import MinMaxScaler
-
 import ast
 import pandas as pd
 

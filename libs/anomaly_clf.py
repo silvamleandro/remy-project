@@ -3,7 +3,6 @@ from tensorflow.keras import layers
 from sklearn.ensemble import IsolationForest
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.svm import OneClassSVM
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
