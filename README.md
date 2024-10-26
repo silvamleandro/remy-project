@@ -1,9 +1,9 @@
 # 🐀 REMY Project
 collaboRative intrusion dEtection system for unManned aerial vehicles swarm SecuritY
 
-## Description
+## 📖 Description
 
-<p align="right">
+<p align="center">
   <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/remy_logo.png" width="150">
 </p>
 
@@ -13,11 +13,13 @@ REMY detects attacks on the UAV network and in-flight anomalies, applying machin
 
 > **PS:** The attacks on GPS were carried out using the following repository: [GPS-SDR-SIM](https://github.com/silvamleandro/gps-sdr-sim)
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Dependencies
 
-This project requires Python version **3.10.3** or higher.
+This project requires Python version **3.10** or higher.
+
+> **Note:** Python 3.10.3 is recommended.
 
 ### Installing
 
@@ -46,13 +48,13 @@ The project is structured as follows:
 │   └── pynput_flight_control.py
 ```
 
-In the `libs` directory, you find the utilities needed for the system to run. The `src` directory is divided into a centralized, where the experiments are located in `.ipynb` files, and a distributed approach, which contains the FL application. he modules for _attack detection in the network_ and _anomaly identification during flight_ follow the same format.
+In the `libs` directory, you find the utilities needed for the system to run. The `src` directory is divided into a `centralized`, where the experiments are located in `.ipynb` files, and a `distributed` approach, which contains the FL application. he modules for _attack detection in the network_ and _anomaly identification during flight_ follow the same format.
 
 Finally, the `uav_control` directory contains the script to control the **Parrot Bebop 2** UAV.
 
 <br>
 
-To execute the centralized approach, use the following command:
+To execute the distributed approach, use the following command:
 
 ```bash
 ./run.sh
@@ -63,23 +65,23 @@ To execute the centralized approach, use the following command:
 - The results are available in the `reports` folders found throughout the project, including `.html`, `.csv`, and `.txt` files; 
 - In the `v0` folder, you find the codes developed in the first part of the project. This includes the work developed during the exchange at the **MRS group**.
 
-## Authors
+## 📝 Authors
 
 <a href="https://github.com/silvamleandro/UAV_Platform/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=silvamleandro/UAV_Platform" />
 </a>
 
-## Contributing
+## 🤝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-<p align="left">
+<p align="right">
   <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/remy_mascot.png" width="300">
 </p>
 
-## Thankful
+## ✨ Thankful
 <div align="center">
     <a href="https://www.gov.br/capes/pt-br">
       <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/capes.png" width="100"/>
@@ -94,7 +96,7 @@ Please make sure to update tests as appropriate.
     </a>
 </div>
 
-## License
+## ⚖️ License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
