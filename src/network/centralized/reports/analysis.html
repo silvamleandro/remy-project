@@ -7542,6 +7542,16 @@ a.anchor-link {
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Imports</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">ydata_profiling</span>
+
+<span class="c1"># libs</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"/remy-project/"</span><span class="p">))))</span>  <span class="c1"># path</span>
 <span class="kn">from</span> <span class="nn">libs.feature_selection</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">get_iv_woe</span><span class="p">,</span>
     <span class="n">get_high_corr_features_pairwise</span><span class="p">,</span>
@@ -7554,12 +7564,6 @@ a.anchor-link {
 <span class="p">)</span>  <span class="c1"># plots.py</span>
 <span class="kn">from</span> <span class="nn">libs.pre_process</span> <span class="kn">import</span> <span class="n">preprocess_network_data</span><span class="p">,</span> <span class="n">drop_columns</span>  <span class="c1"># pre_process.py</span>
 <span class="kn">from</span> <span class="nn">libs.utils</span> <span class="kn">import</span> <span class="n">split_train_test</span><span class="p">,</span> <span class="n">split_X_y</span>  <span class="c1"># utils.py</span>
-
-<span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">ydata_profiling</span>
 
 
 <span class="c1"># Ignore warnings</span>
