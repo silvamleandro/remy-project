@@ -27,11 +27,17 @@ GPS-SDR-SIM: https://github.com/silvamleandro/gps-sdr-sim
 
 # Thankful
 <div align="center">
-    <a href="https://www.gov.br/capes/pt-br"> <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/capes.png" width="100"/> </a>
+    <a href="https://www.gov.br/capes/pt-br" style="text-decoration: none;">
+      <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/capes.png" width="100"/>
+    </a>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <a href="https://www.icmc.usp.br/"> <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/icmc_usp.png" width="170"/> </a>
+    <a href="https://www.icmc.usp.br/" style="text-decoration: none;">
+      <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/icmc_usp.png" width="170"/>
+    </a>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <a href="https://www.lsec.icmc.usp.br/"> <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/lsec_lab.png" width="100"/> </a>
+    <a href="https://www.lsec.icmc.usp.br/" style="text-decoration: none;">
+      <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/lsec_lab.png" width="100"/>
+    </a>
 </div>
 
 <p align="left">
