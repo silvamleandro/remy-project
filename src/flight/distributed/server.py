@@ -1,4 +1,5 @@
 # Imports
+from logging import INFO
 from typing import Dict
 import argparse
 import flwr as fl
@@ -20,7 +21,7 @@ warnings.filterwarnings("ignore")
 def fit_config(rnd: int) -> Dict:
     config = {
         "epoch_global": str(rnd),
-        "num_epochs": 25,
+        "num_epochs": 100,
         "batch_size": 32
     }
     # Configuration for each training
@@ -59,6 +60,7 @@ def average_metrics(metrics):
 def select_strategy(strategy_num, min_available_clients, parameters):
     # Select and create strategy
     if strategy_num == 1: # FedAvg
+        fl.common.logger.log(INFO, "########################## FedAvg ##########################")
         strategy = fl.server.strategy.FedAvg(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -68,6 +70,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             initial_parameters=fl.common.ndarrays_to_parameters(parameters)
         )
     elif strategy_num == 2: # FedAvgM
+        fl.common.logger.log(INFO, "########################## FedAvgM ##########################")
         strategy = fl.server.strategy.FedAvgM(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -79,6 +82,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             server_momentum=0.95
         )
     elif strategy_num == 3: # FedAdagrad
+        fl.common.logger.log(INFO, "########################## FedAdagrad ##########################")
         strategy = fl.server.strategy.FedAdagrad(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -91,6 +95,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             tau = 1e-9
         )
     elif strategy_num == 4: # FedAdam
+        fl.common.logger.log(INFO, "########################## FedAdam ##########################")
         strategy = fl.server.strategy.FedAdam(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -105,6 +110,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             tau = 1e-9
         )
     elif strategy_num == 5: # FedYogi
+        fl.common.logger.log(INFO, "########################## FedYogi ##########################")
         strategy = fl.server.strategy.FedYogi(
             fraction_fit=1,
             fraction_evaluate=1,
@@ -119,7 +125,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             tau = 1e-9
         )
 
-    return strategy # Return select strategy
+    return strategy # Select strategy
 
 
 def main():

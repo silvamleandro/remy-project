@@ -24,11 +24,11 @@ parser.add_argument("--data_path", type=str, required=True)
 args = parser.parse_args()
 
 # Load data
-fl.common.logger.log(INFO, "Loading data...")
+fl.common.logger.log(INFO, "Loading Data...")
 X_train, y_train, X_test, y_test = load_data(args.data_path, columns_to_drop=[], standardize=False)
 
 # Reformat data to DMatrix for XGBoost
-fl.common.logger.log(INFO, "Reformatting data...")
+fl.common.logger.log(INFO, "Reformatting Data...")
 # Transform dataset to DMatrix format for XGBoost
 train_dmatrix = xgb.DMatrix(X_train, label=y_train)
 valid_dmatrix = xgb.DMatrix(X_test, label=y_test)
@@ -129,6 +129,6 @@ class XgbClient(fl.client.Client):
 
 
 # Start Flower client
-fl.client.start_client(server_address="127.0.0.1:8080",
+fl.client.start_client(server_address="0.0.0.0:8080",
                        client=XgbClient(train_dmatrix, valid_dmatrix,len(X_train), len(X_test),
                                         num_local_round, params).to_client())

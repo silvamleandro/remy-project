@@ -1,5 +1,6 @@
 # Imports
 from flwr.server.strategy import FedXgbBagging
+from logging import INFO
 from typing import Dict
 import flwr as fl
 import warnings
@@ -36,6 +37,7 @@ def config_func(rnd: int) -> Dict[str, str]:
 
 
 # Define strategy
+fl.common.logger.log(INFO, "########################## FedXgbBagging ##########################")
 strategy = FedXgbBagging(
     fraction_fit=(float(num_clients_per_round) / pool_size),
     min_fit_clients=num_clients_per_round,
