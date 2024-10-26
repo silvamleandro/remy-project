@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 def fit_config(rnd: int) -> Dict:
     config = {
         "epoch_global": str(rnd),
-        "num_epochs": 100,
+        "num_epochs": 50,
         "batch_size": 32
     }
     # Configuration for each training
@@ -59,7 +59,7 @@ def average_metrics(metrics):
 
 def select_strategy(strategy_num, min_available_clients, parameters):
     # Select and create strategy
-    if strategy_num == 1: # FedAvg
+    if strategy_num == 1:  # FedAvg
         fl.common.logger.log(INFO, "########################## FedAvg ##########################")
         strategy = fl.server.strategy.FedAvg(
             fraction_fit=1,
@@ -69,7 +69,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             on_fit_config_fn=fit_config,
             initial_parameters=fl.common.ndarrays_to_parameters(parameters)
         )
-    elif strategy_num == 2: # FedAvgM
+    elif strategy_num == 2:  # FedAvgM
         fl.common.logger.log(INFO, "########################## FedAvgM ##########################")
         strategy = fl.server.strategy.FedAvgM(
             fraction_fit=1,
@@ -81,7 +81,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             server_learning_rate=1.0,
             server_momentum=0.95
         )
-    elif strategy_num == 3: # FedAdagrad
+    elif strategy_num == 3:  # FedAdagrad
         fl.common.logger.log(INFO, "########################## FedAdagrad ##########################")
         strategy = fl.server.strategy.FedAdagrad(
             fraction_fit=1,
@@ -94,7 +94,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             eta_l=1e-1,
             tau = 1e-9
         )
-    elif strategy_num == 4: # FedAdam
+    elif strategy_num == 4:  # FedAdam
         fl.common.logger.log(INFO, "########################## FedAdam ##########################")
         strategy = fl.server.strategy.FedAdam(
             fraction_fit=1,
@@ -109,7 +109,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             beta_2=1e-1,
             tau = 1e-9
         )
-    elif strategy_num == 5: # FedYogi
+    elif strategy_num == 5:  # FedYogi
         fl.common.logger.log(INFO, "########################## FedYogi ##########################")
         strategy = fl.server.strategy.FedYogi(
             fraction_fit=1,
@@ -125,7 +125,7 @@ def select_strategy(strategy_num, min_available_clients, parameters):
             tau = 1e-9
         )
 
-    return strategy # Select strategy
+    return strategy  # Select strategy
 
 
 def main():
@@ -138,10 +138,10 @@ def main():
     # Initializing a generic model to get its parameters
     X_train, _, _, _ = load_data(args.data_path)
     
-    parameters = create_model(X_train.shape[1]).get_weights() # Global autoencoder
-    del X_train # Delete X_train
+    parameters = create_model(X_train.shape[1]).get_weights()  # Global autoencoder
+    del X_train  # Delete X_train
 
-    try: # Select and create strategy
+    try:  # Select and create strategy
         strategy = select_strategy(strategy_num=int(args.strategy_num), min_available_clients=2, parameters=parameters)
     except ValueError: strategy = select_strategy(strategy_num=1, min_available_clients=2, parameters=parameters)
     

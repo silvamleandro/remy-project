@@ -28,7 +28,7 @@ from libs.fl_autoencoder import (
 # Ignore warnings
 warnings.filterwarnings("ignore")
 
-verbose = 0 # Show metrics results or not
+verbose = 0  # Show metrics results or not
 
 
 def evaluate_learning(y_true, y_pred):
@@ -53,7 +53,7 @@ class FlwrClient(fl.client.NumPyClient):
         self.data_path = data_path
         self.X_train, self.y_train, self.X_test, self.y_test = load_data(self.data_path)
 
-        input_dim = self.X_train.shape[1] # Number of predictor variables
+        input_dim = self.X_train.shape[1]  # Number of predictor variables
         # Create autoencoder model
         self.model = create_model(input_dim)
 
@@ -61,7 +61,7 @@ class FlwrClient(fl.client.NumPyClient):
         self.threshold_normal = 0  # Threshold calculated on normal samples from train data during evaluate
         self.threshold_abnormal = 0  # Threshold calculated on abnormal samples from train data during evaluate
 
-        train_data = self.X_train[self.y_train == 0] # Only normal samples
+        train_data = self.X_train[self.y_train == 0]  # Only normal samples
         # Separate 90% of the indexes for validation
         idx = int(train_data.shape[0] * 0.90)
         self.val_data = train_data[idx:]  # Hold-out validation set for threshold calculation
@@ -72,11 +72,11 @@ class FlwrClient(fl.client.NumPyClient):
 
     def get_parameters(self):
         # Return local model parameters
-        return self.model.get_weights() # get_weights from Keras returns the weights as ndarray
+        return self.model.get_weights()  # get_weights from Keras returns the weights as ndarray
 
     def set_parameters(self, parameters):
         # Server sets model parameters from a list of NumPy ndarrays (Optional)
-        self.model.set_weights(parameters) # set_weights on local model (similar to get_weights)
+        self.model.set_weights(parameters)  # set_weights on local model (similar to get_weights)
 
     def fit(self, parameters, config):
         # Receive parameters from the server and use them to train on local data (locally)
@@ -88,7 +88,7 @@ class FlwrClient(fl.client.NumPyClient):
             verbose=0,
             batch_size=config["batch_size"],
             shuffle=True,
-            epochs=config["num_epochs"] # Single epoch on local data
+            epochs=config["num_epochs"]  # Single epoch on local data
         )
 
         # History loss
