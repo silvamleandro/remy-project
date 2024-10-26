@@ -1,12 +1,18 @@
 # Imports
-from libs.utils import load_data
 from logging import INFO
 from sklearn.metrics import precision_recall_fscore_support
 import argparse
 import flwr as fl
 import numpy as np
+import os
+import sys
 import xgboost as xgb
 import warnings
+
+# libs
+sys.path.append(os.path.abspath(os.path.abspath(
+    os.path.join(os.path.expanduser("~") + "/remy-project/"))))  # path
+from libs.utils import load_data
 
 
 # Ignore warnings
@@ -123,6 +129,6 @@ class XgbClient(fl.client.Client):
 
 
 # Start Flower client
-fl.client.start_client(server_address="127.0.0.1:9030",
+fl.client.start_client(server_address="127.0.0.1:8080",
                        client=XgbClient(train_dmatrix, valid_dmatrix,len(X_train), len(X_test),
                                         num_local_round, params).to_client())

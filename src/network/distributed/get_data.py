@@ -1,10 +1,16 @@
 # Imports
+from ydata_synthetic.synthesizers.regular import RegularSynthesizer
+import os
+import pandas as pd
+import sys
+import warnings
+
+# libs
+sys.path.append(os.path.abspath(os.path.abspath(
+    os.path.join(os.path.expanduser("~") + "/remy-project/"))))  # path
 from libs.balance_data import BalanceData
 from libs.pre_process import preprocess_network_data  # pre_process.py
 from libs.utils import split_train_test, split_X_y  # utils.py
-from ydata_synthetic.synthesizers.regular import RegularSynthesizer
-import pandas as pd
-import warnings
 
 
 # Ignore warnings

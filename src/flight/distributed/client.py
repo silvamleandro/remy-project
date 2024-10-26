@@ -1,10 +1,4 @@
 # Imports
-from libs.utils import load_data
-from libs.fl.autoencoder import (
-    create_model,
-    reconstruction_loss,
-    distance_calculation
-)
 from sklearn.metrics import (
     confusion_matrix,
     accuracy_score,
@@ -16,7 +10,20 @@ from sklearn.metrics import (
 import argparse
 import flwr as fl
 import numpy as np
+import os
+import sys
 import warnings
+
+# libs
+sys.path.append(os.path.abspath(os.path.abspath(
+    os.path.join(os.path.expanduser("~") + "/remy-project/"))))  # path
+from libs.utils import load_data
+from libs.fl_autoencoder import (
+    create_model,
+    reconstruction_loss,
+    distance_calculation
+)
+
 
 # Ignore warnings
 warnings.filterwarnings("ignore")

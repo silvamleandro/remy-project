@@ -4,6 +4,7 @@ from typing import Dict
 import flwr as fl
 import warnings
 
+
 # Ignore warnings
 warnings.filterwarnings("ignore")
 
@@ -46,5 +47,5 @@ strategy = FedXgbBagging(
     on_fit_config_fn=config_func)
 
 # Start Flower server
-fl.server.start_server(server_address="0.0.0.0:9030", strategy=strategy,
+fl.server.start_server(server_address="0.0.0.0:8080", strategy=strategy,
                        config=fl.server.ServerConfig(num_rounds=num_rounds))

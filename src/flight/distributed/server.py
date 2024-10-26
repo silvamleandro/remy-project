@@ -1,10 +1,17 @@
 # Imports
-from libs.utils import load_data
-from libs.fl.autoencoder import create_model
 from typing import Dict
 import argparse
 import flwr as fl
+import os
+import sys
 import warnings
+
+# libs
+sys.path.append(os.path.abspath(os.path.abspath(
+    os.path.join(os.path.expanduser("~") + "/remy-project/"))))  # path
+from libs.utils import load_data
+from libs.fl_autoencoder import create_model
+
 
 # Ignore warnings
 warnings.filterwarnings("ignore")
