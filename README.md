@@ -2,7 +2,7 @@
 collaboRative intrusion dEtection system for unManned aerial vehicles swarm SecuritY
 
 <p align="right">
-  <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/logo_remy.png" width="150">
+  <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/remy_logo.png" width="150">
 </p>
 
 <br>
@@ -27,11 +27,11 @@ GPS-SDR-SIM: https://github.com/silvamleandro/gps-sdr-sim
 
 # Thankful
 <div align="center">
-    <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/capes.png" width="100"/>
+    <a href="https://www.gov.br/capes/pt-br"> <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/capes.png" width="100"/> </a>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/icmc_usp.png" width="170"/>
+    <a href="https://www.icmc.usp.br/"> <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/icmc_usp.png" width="170"/> </a>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/lsec_lab.png" width="100"/>
+    <a href="https://www.lsec.icmc.usp.br/"> <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/lsec_lab.png" width="100"/> </a>
 </div>
 
 <p align="left">
