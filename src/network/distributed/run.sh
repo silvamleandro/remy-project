@@ -4,6 +4,9 @@
 
 echo "[REMY][NETWORK MODULE] Starting Federated Learning server using Flower"
 
+echo "Generating data..."
+python generate_data.py
+
 python server.py &
 sleep 10  # Sleep to give the server enough time to start
 
