@@ -74,7 +74,7 @@ To execute the distributed approach, use the following command:
 ## 📝 Authors
 
 <a href="https://github.com/silvamleandro/UAV_Platform/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=silvamleandro/UAV_Platform" />
+  <img src="https://contrib.rocks/image?repo=silvamleandro/UAV_Platform"/>
 </a>
 
 ## 🤝 Contributing
