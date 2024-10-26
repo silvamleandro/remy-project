@@ -12,7 +12,7 @@ Unmanned Aerial Vehicles (UAVs), also known as drones, have become increasingly 
 REMY detects attacks on the UAV network and in-flight anomalies, applying machine learning techniques through supervised and unsupervised learning. The threats identified in the network are blackhole, grayhole, and flooding, and in turn, in flight are GPS spoofing and jamming. Federated Learning (FL) is also present in REMY to ensure data privacy and training collaboration between UAVs. Furthermore, geographic and physical characteristics are considered to make the IDS operation independent of the hardware.
 
 <p align="center">
-  <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/remy_operation.png" width="850">
+  <img src="https://github.com/silvamleandro/remy-project/blob/main/imgs/remy_operation.png" width="700">
 </p>
 
 > **PS:** The attacks on GPS were carried out using the following repository: [GPS-SDR-SIM](https://github.com/silvamleandro/gps-sdr-sim)
